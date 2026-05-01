@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+# Note: plots/ is intentionally NOT ignored — committed by CI for README embedding.
