@@ -6,7 +6,7 @@ The plots below are regenerated automatically by GitHub Actions on every push th
 
 ## Body fat % over time
 
-![Body fat over time](plots/bodyfat_timeseries.png?v=local)
+![Body fat over time](plots/bodyfat_timeseries.png?v=433e805)
 
 - **Inner shaded band** — 95% measurement uncertainty (caliper random + ±1 mm systematic).
 - **Outer faint band** — ±3.5 %BF method SEE (JP3 vs. hydrostatic), the equation's own residual error.
@@ -14,7 +14,7 @@ The plots below are regenerated automatically by GitHub Actions on every push th
 
 ## Loss rate vs. reference ranges
 
-![Rate speedometer](plots/rate_speedometer.png?v=local)
+![Rate speedometer](plots/rate_speedometer.png?v=433e805)
 
 Weighted-least-squares fit of `BF% = a + b·t`, with 95% CI on the slope. Reference bands: sustainable cut (0.5–0.7 %BF/wk), aggressive (0.7–1.0), and faster-than-pure-fat-loss (>1.0).
 
