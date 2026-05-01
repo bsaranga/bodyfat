@@ -28,11 +28,25 @@ jobs:
       - name: Execute notebook
         run: jupyter nbconvert --to notebook --execute bodyfat.ipynb --output bodyfat.ipynb
 
+      - name: Cache-bust README image URLs with commit SHA
+        run: |
+          SHA="${GITHUB_SHA::7}"
+          # Replace any existing ?v=... query on the two plot URLs, or add one if missing.
+          python - <<PY
+          import re, pathlib
+          sha = "${{ github.sha }}"[:7]
+          p = pathlib.Path("README.md")
+          s = p.read_text()
+          for img in ("plots/bodyfat_timeseries.png", "plots/rate_speedometer.png"):
+              s = re.sub(re.escape(img) + r"(\?v=[^)\s]*)?", f"{img}?v={sha}", s)
+          p.write_text(s)
+          PY
+
       - name: Commit updated artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add plots/ bodyfat.ipynb
+          git add plots/ bodyfat.ipynb README.md
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
